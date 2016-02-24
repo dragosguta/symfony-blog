@@ -8,10 +8,14 @@
 @import "bootstrap/variables";
 @import "bootstrap/mixins";
 
+// Paper Theme
+@import "bootstrap/paper-theme/variables";
+@import "bootstrap/paper-theme/bootswatch";
+
 // Reset and dependencies
 @import "bootstrap/normalize";
 @import "bootstrap/print";
-@import "bootstrap/glyphicons";
+//@import "bootstrap/glyphicons"; use font-awesome
 
 // Core CSS
 @import "bootstrap/scaffolding";
