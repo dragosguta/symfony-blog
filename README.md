@@ -11,42 +11,41 @@ Bootstrap theme from http://www.bootswatch.com
 3. php bin/console server:run
 
 Directory Structure:
-```
-./app
-./app/config
-./app/Resources
-./bin
-./src
-./src/AppBundle
-./tests
-./tests/AppBundle
-./var
-./var/cache
-./var/logs
-./var/sessions
-./vendor
-./vendor/behat
-./vendor/bin
-./vendor/composer
-./vendor/doctrine
-./vendor/incenteev
-./vendor/jdorn
-./vendor/knplabs
-./vendor/kriswallsmith
-./vendor/leafo
-./vendor/monolog
-./vendor/paragonie
-./vendor/patchwork
-./vendor/psr
-./vendor/sensio
-./vendor/sensiolabs
-./vendor/swiftmailer
-./vendor/symfony
-./vendor/twig
-./web
-./web/bundles
-./web/css
-./web/fonts
-./web/js
+├── app
+│   ├── Resources
+│   └── config
+├── bin
+├── src
+│   └── AppBundle
+├── tests
+│   └── AppBundle
+├── var
+│   ├── cache
+│   ├── logs
+│   └── sessions
+├── vendor
+│   ├── behat
+│   ├── bin
+│   ├── composer
+│   ├── doctrine
+│   ├── incenteev
+│   ├── jdorn
+│   ├── knplabs
+│   ├── kriswallsmith
+│   ├── leafo
+│   ├── monolog
+│   ├── paragonie
+│   ├── patchwork
+│   ├── psr
+│   ├── sensio
+│   ├── sensiolabs
+│   ├── swiftmailer
+│   ├── symfony
+│   └── twig
+└── web
+    ├── bundles
+    ├── css
+    ├── fonts
+    └── js
 
 
