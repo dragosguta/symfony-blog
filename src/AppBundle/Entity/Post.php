@@ -72,7 +72,7 @@ class Post
         return $this->title;
     }
 
-    public function setTitle()
+    public function setTitle($title)
     {
         $this->title = $title;
     }

@@ -31,7 +31,8 @@ class BlogController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             $user = $this->get('security.token_storage')->getToken()->getUser();
-            $post->setAuthor($user);
+            $post->setAuthor($user->getUsername());
+            $post->setPublishedAt(new \DateTime());
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($post);
