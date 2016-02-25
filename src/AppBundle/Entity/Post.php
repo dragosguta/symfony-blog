@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * Post
@@ -13,6 +14,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Post
 {
+    use ORMBehaviors\Sluggable\Sluggable;
+    // Items per page...for paginator
+    const NUM_ITEMS = 5;
+
     /**
      * @var int
      *
@@ -28,6 +33,11 @@ class Post
      * @Assert\NotBlank()
      */
     private $title;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $slugField;
 
     /**
      *
@@ -62,6 +72,19 @@ class Post
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Getter/Setters for slugs
+     */
+    public function getSlug()
+    {
+        return $this->slugField;
+    }
+
+    public function setSlug($slugField)
+    {
+        $this->slugField = $slugField;
     }
 
     /**
@@ -114,6 +137,20 @@ class Post
     public function setPublishedAt(\DateTime $publishedAt)
     {
         $this->publishedAt = $publishedAt;
+    }
+
+    /**
+     * Create slugs for posts
+     */
+    public function getSluggableFields()
+    {
+        $parts = explode(' ', $this->getTitle());
+        return $parts;
+    }
+
+    public function generateSlugValue($values)
+    {
+        return implode('-', $values);
     }
 }
 

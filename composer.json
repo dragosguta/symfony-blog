@@ -29,7 +29,9 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "symfony/assetic-bundle": "^2.7",
         "leafo/scssphp": "^0.6.3",
-        "patchwork/jsqueeze": "~1.0"
+        "patchwork/jsqueeze": "~1.0",
+        "knplabs/knp-paginator-bundle": "^2.5",
+        "knplabs/doctrine-behaviors": "~1.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

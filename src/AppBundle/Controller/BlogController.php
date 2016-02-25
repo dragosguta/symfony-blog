@@ -11,13 +11,18 @@ use AppBundle\Form\PostType;
 class BlogController extends Controller
 {
     /**
-     * @Route("/", name="home_index")
+     * @Route("/", name="home_index", defaults={"page"=1})
+     * @Route("/page/{page}", name="home_index_paginated", requirements={"page": "\d+"})
      */
-    public function indexAction(Request $request)
+    public function indexAction($page)
     {
-        return $this->render('home/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
-        ]);
+        $query = $this->getDoctrine()->getRepository('AppBundle:Post')->findAll();
+
+        $paginator = $this->get('knp_paginator');
+        $posts = $paginator->paginate($query, $page, Post::NUM_ITEMS);
+        $posts->setUsedRoute('home_index_paginated');
+
+        return $this->render('home/index.html.twig', array('posts' => $posts));
     }
 
     /**
@@ -33,6 +38,8 @@ class BlogController extends Controller
             $user = $this->get('security.token_storage')->getToken()->getUser();
             $post->setAuthor($user->getUsername());
             $post->setPublishedAt(new \DateTime());
+            $slug = $post->generateSlugValue($post->getSluggableFields());
+            $post->setSlug($slug);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($post);
@@ -42,5 +49,14 @@ class BlogController extends Controller
         }
 
         return $this->render('admin/index.html.twig', array('form' => $form->createView()));
+    }
+
+    /**
+     * @Route("/posts/{id}", name="home_post")
+     */
+    public function showPostAction(Post $post)
+    {
+        return $this->render('home/show.html.twig',
+            array('post' => $post));
     }
 }

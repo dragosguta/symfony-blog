@@ -8,6 +8,8 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = [
+            new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),

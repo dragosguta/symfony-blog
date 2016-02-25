@@ -76,3 +76,9 @@ assetic:
         scssphp:
             formatter: 'Leafo\ScssPhp\Formatter\Compressed'
         jsqueeze: ~
+
+# https://github.com/KnpLabs/KnpPaginatorBundle
+# KnpPaginatorBundle configuration (used to paginate large result set)
+knp_paginator:
+    template:
+        pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig

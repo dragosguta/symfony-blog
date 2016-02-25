@@ -1,6 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {% for post in posts %}
+        <div class="well">
+            <article class="post">
+                <h2>
+                    <a href="{{ path('home_post', { id: post.id}) }}">
+                        {{ post.title }}
+                    </a>
+                </h2>
+                {{ post.content }}
+            </article>
+        </div>
+        {% else %}
+        <div class="well text-center">
+            <h1>No Posts Found</h1>
+        </div>
+    {% endfor %}
 
-
+    <div class="navigation text-center">
+        {{ knp_pagination_render(posts) }}
+    </div>
 {% endblock %}
