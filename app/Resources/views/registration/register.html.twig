@@ -1,34 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{{ form_start(form) }}
-    {{ form_row(form.userName) }}
-    {{ form_row(form.email) }}
-    {{ form_row(form.password.first) }}
-    {{ form_row(form.password.second) }}
-
-    <button type="submit">Register!</button>
-{{ form_end(form) }}
-<div class="row">
-        <div class="col-md-2 col-md-offset-5">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
             <div class="well">
-                <form action="#" method="post">
+                {{ form_start(form) }}
                     <fieldset>
-                        <legend><i class="fa fa-lock"></i> {{ 'title.login'|trans }}</legend>
+                        <legend><i class="fa fa-lock"></i> Sign Up</legend>
                         <div class="form-group">
-                            <label for="username">{{ 'label.username'|trans }}</label>
-                            <input type="text" id="username" name="_username" value="" class="form-control"/>
+                            <label for="username">Username</label>
+                            {{ form_widget(form.userName, { 'attr': {'class': 'form-control','id': 'username','name': '_username'} }) }}
                         </div>
                         <div class="form-group">
-                            <label for="password">{{ 'label.password'|trans }}</label>
-                            <input type="password" id="password" name="_password" class="form-control" />
+                            <label for="email">Email</label>
+                            {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'id': 'email', 'name': '_email'} }) }}
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            {{ form_widget(form.password.first, { 'attr': {'class': 'form-control', 'id': 'password', 'name': '_password'} }) }}
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Confirm Password</label>
+                            {{ form_widget(form.password.second, { 'attr': {'class': 'form-control', 'id': 'password', 'name': '_password'} }) }}
                         </div>
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
                         <button type="submit" class="btn btn-primary">
                             <i class="fa fa-sign-in"></i> Register
                         </button>
+                        <a href="{{ path('login') }}">
+                            <button type="button" class="btn btn-primary">
+                                <i class="fa fa-sign-in"></i> Login
+                            </button>
+                        </a>
                     </fieldset>
-                </form>
+                {{ form_end(form) }}
             </div>
         </div>
+    </div>
 {% endblock %}

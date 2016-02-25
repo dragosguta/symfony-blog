@@ -46,12 +46,12 @@ class Post
      * @ORM\Column(type="datetime")
      * @Assert\DateTime()
      */
-    private $publishedDate;
+    private $publishedAt;
 
     // Constructor
     public function __construct()
     {
-        $this->$publishedDate = new \DateTime();
+        $this->publishedAt = new \DateTime();
     }
 
     /**
@@ -101,6 +101,19 @@ class Post
     public function setAuthor($author)
     {
         $this->author = $author;
+    }
+
+    /**
+     * Getter/Setters for publishedAt
+     */
+    public function getPublishedAt()
+    {
+        return $this->publishedAt;
+    }
+
+    public function setPublishedAt(\DateTime $publishedAt)
+    {
+        $this->publishedAt = $publishedAt;
     }
 }
 

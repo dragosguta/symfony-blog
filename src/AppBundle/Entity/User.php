@@ -25,7 +25,7 @@ class User implements UserInterface
      /**
      * @ORM\Column(type="string", unique=true)
      */
-    private $userName;
+    private $username;
 
     /**
      * @ORM\Column(type="string", unique=true)
@@ -36,6 +36,11 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\Column(type="json_array")
+     */
+    private $roles = array();
 
     /**
      * Get id
@@ -52,12 +57,12 @@ class User implements UserInterface
      */
     public function getUsername()
     {
-        return $this->userName;
+        return $this->username;
     }
 
-    public function setUsername($userName)
+    public function setUsername($username)
     {
-        $this->userName = $userName;
+        $this->username = $username;
     }
 
     /**
