@@ -2,18 +2,19 @@
 
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
-class BlogController extends Controller
+class AdminController extends Controller
 {
     /**
-     * @Route("/", name="blog_home")
+     * @Route("/admin", name="admin_home")
      */
     public function indexAction(Request $request)
     {
-        return $this->render('home/index.html.twig', [
+        return $this->render('admin/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
         ]);
     }
